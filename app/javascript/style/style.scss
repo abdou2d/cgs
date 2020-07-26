@@ -1,4 +1,5 @@
 @import "trix/dist/trix";
+@import "uikit";
 @font-face {
     font-family: 'Noto Kufi Arabic';
     font-style: normal;
@@ -8,19 +9,31 @@
 
 body {
 background-color: #f6f2ef;}
+
+
 .uk-button-primary {
         background-color: #2da562;
         &:hover{background-color: #33b46b;}
     }
-.input {margin-bottom: 20px;}
-.cg-dark {background-color: #141924;}
-.cg-dark-sc {background-color: #101216;}
+.input {
+    margin-bottom: 20px;
+}
+.cg-dark {
+    background-color: #141924;
+}
+.cg-dark-sc {
+    background-color: #101216;
+}
 .error_notification, .error {
     color: red;
     font-size: small;
 }
-.uk-text-bold {font-weight: 600;}
-.cg-text-bold {font-weight: 500;}
+.uk-text-bold {
+    font-weight: 600;
+}
+.cg-text-bold {
+    font-weight: 500;
+}
 .ar {font-family: "Noto Kufi Arabic", Helvetica, Arial, sans-serif;}
 .uk-navbar-nav li > a{ font-family: "Noto Kufi Arabic", Helvetica, Arial, sans-serif; }
 .uk-h1, .uk-h2, .uk-h3 {font-family: "Noto Kufi Arabic", Helvetica, Arial, sans-serif;}
@@ -45,10 +58,14 @@ hr, .uk-hr {
 }
 
 
-.uk-offcanvas-bar::-webkit-scrollbar { width: 1px; }
+.uk-offcanvas-bar::-webkit-scrollbar {
+    width: 1px;
+  }
 
 .uk-offcanvas-bar{top: 81px;}
-.cg-offcan { width: 100vw;}
+.cg-offcan {
+    width: 100vw;
+}
   .uk-comment-body {
     background-color: #f6f2ef;
     padding: 10px;
@@ -58,7 +75,9 @@ hr, .uk-hr {
 .shadow{
     box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
 }
-.uk-container-xsmall { max-width: 450px; }
+.uk-container-xsmall {
+    max-width: 450px;
+}
 .uk-search {
     padding: 10px;
     background: #f6f2ef;
