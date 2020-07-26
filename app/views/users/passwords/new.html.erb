@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'nav' %> 
+
+<div class="ar uk-section uk-section">
+<div class="uk-container uk-container-small uk-margin-xlarge-bottom">
+<div class="uk-padding-remove-top uk-padding">
+  <%= link_to root_path do %>      
+    <%=image_tag("cga53.svg", width: "300px", :class => "uk-margin-auto uk-navbar-item uk-logo")%>
+  <% end %>
+  <div class="uk-width-large uk-margin-auto uk-background-default uk-padding">
+  <div class="uk-form-stacked">
+
+ <h1 class="ar uk-margin-medium-bottom uk-text-center">استعادة حسابك</h1>
+      <%- if controller_name != 'sessions' %>
+          <p class="ar uk-text-center">او  <%= link_to "تسجيل الدخول", new_session_path(resource_name) %></p>
+      <% end %>
+
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email", class: "uk-input uk-margin-small-top" } %>
+  </div>
+
+  <div class="uk-margin-medium-top uk-text-center uk-text-bolder">
+    <%= f.button :submit, "أرسال", class: "ar uk-button uk-button-primary uk-button-large uk-width-1-1"  %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+</div></div></div></div>

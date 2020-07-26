@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'nav' %> 
+<div class="ar uk-section uk-section">
+<div class="uk-container uk-container-small">
+<div class="uk-padding-remove-top uk-padding">
+  <%= link_to root_path do %>      
+    <%=image_tag("cga53.svg", width: "300px", :class => "uk-margin-auto uk-navbar-item uk-logo")%>
+  <% end %>
+</div>
+  <div class="uk-width-large uk-margin-auto uk-background-default uk-padding">
+  <div class="uk-form-stacked">
+
+<h2 class="uk-h2">اعادة ارسال ايميل التفعيل</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :confirmation_token %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                input_html: { autocomplete: "email", class: "uk-input uk-margin-small-top" } %>
+  </div>
+
+  <div class="uk-margin-medium-top uk-text-center uk-text-bolder">
+    <%= f.button :submit, "أرسال", class: "uk-button uk-button-primary uk-button-large uk-width-1-1"  %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+</div></div></div></div>

@@ -1,0 +1,22 @@
+<div class="uk-section uk-section-default">
+
+        <div class="uk-container uk-container-small uk-padding uk-text-center uk-background-default">
+                <h1  class="uk-h1" ><%= @post.title %></h1>
+                <div class="time uk-comment-meta"><a class="uk-link-reset" href="#"><%= local_time_ago @post.created_at %></a></div>
+        </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="uk-container-expand uk-background-default">
+        <div class="uk-container uk-container-small uk-padding-large ">
+                <p>
+                <%= @post.body %>
+                </p>
+        </div>
+</div>

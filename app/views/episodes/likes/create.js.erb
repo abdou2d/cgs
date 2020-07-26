@@ -1,0 +1,1 @@
+document.getElementById("like_<%= @episode.slug %>_likes").innerHTML = ("<%=j render partial: "episodes/likes", locals: {episode: @episode} %>")

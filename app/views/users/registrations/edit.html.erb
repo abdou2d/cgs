@@ -1,0 +1,73 @@
+<div class="uk-container-expand">
+<div class="uk-container uk-margin-xlarge">
+
+  <div class="uk-grid-small uk-child-width-expand uk-text-center uk-margin-top  uk-hidden@m" uk-grid>
+    <div>
+        <%= link_to  edit_user_registration_path do %>
+          <div class="uk-card-default uk-padding-small uk-card-hover shadow uk-h3">Edit Account</div>
+        <% end %>
+    </div>
+    <div>
+        <%= link_to edit_profile_path(current_user.profile) do %>
+          <div class="uk-card-default uk-padding-small uk-card-hover shadow uk-h3">Edit Profile</div>
+        <% end %>
+    </div>
+    
+</div>
+
+
+
+  <div class="uk-child-width-1-2 uk-grid-collapse uk-flex-center uk-margin-top" uk-grid>
+    <div class="ar uk-width-2-5@m ">
+        <div class="uk-card uk-card-default uk-card-body shadow">
+        
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :username, disabled: true, input_html: {class: "uk-input"} %>
+          <%= f.input :email, required: true, autofocus: true, input_html: {class: "uk-input"} %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>رجاء تفعيل الايميل: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <%= f.input :password, label: "تعديل كلمة المرور",
+                      required: false, input_html: { autocomplete: "new-password" , class: "uk-input"} %>
+          <%= f.input :password_confirmation, required: false, label: "تأكيد كلمة المرور",
+                      input_html: { autocomplete: "new-password", class: "uk-input" } %>
+          <%= f.input :current_password, label: "كلمة المرور الحالية ", hint: "مطلوب قبل تحديث البيانات",
+                      required: true, input_html: { autocomplete: "current-password", class: "uk-input" } %>
+        </div>
+
+        <div class="uk-margin-medium-top uk-text-center uk-text-bolder">
+          <%= f.button :submit, "تحديث", class: "uk-button uk-button-primary uk-button-large" %>
+        </div>
+      <% end %>
+        <%= link_to "Back", :back %>
+        
+        </div>
+    </div>
+
+ <div class=" uk-flex uk-flex-column uk-grid-small uk-width-1-5@m uk-text-center uk-margin-right uk-visible@m" uk-grid>
+    <div>
+        <%= link_to  edit_user_registration_path do %>
+          <div class="uk-background-default uk-padding-small uk-margin-remove  uk-h3">Edit Account</div>
+        <% end %>
+    </div>
+    <div>
+        <%= link_to edit_profile_path(current_user.profile) do %>
+          <div class="uk-card-default uk-padding-small uk-margin-remove shadow uk-h3">Edit Profile</div>
+        <% end %>
+    </div>
+    
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+</div>

@@ -1,0 +1,45 @@
+<%= stylesheet_link_tag 'nav' %> 
+
+
+<div class="ar uk-section uk-section">
+  <div class="uk-container uk-container-small uk-margin-xlarge-bottom">
+  <div class="uk-padding-remove-top uk-padding">
+  <%= link_to root_path do %>      
+    <%=image_tag("cga53.svg", width: "300px", :class => "uk-margin-auto uk-navbar-item uk-logo")%>
+  <% end %>
+</div>
+    <div class="uk-width-large uk-margin-auto uk-background-default uk-padding">
+      <div class="uk-form-stacked">
+      <h1 class="ar uk-margin-medium-bottom uk-text-center">إنشاء حساب جديد</h1>
+      <%- if controller_name != 'sessions' %>
+          <p class="uk-text-center">او  <%= link_to "تسجيل الدخول", new_session_path(resource_name) %></p>
+      <% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :username,
+                required: true,
+                autofocus: true,                
+                input_html: { class: "uk-input uk-margin-small-top" }%>
+    <%= f.input :email,
+                required: true,
+                input_html: { autocomplete: "email", class: "uk-input uk-margin-small-top" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} Minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password", class: "uk-input uk-margin-small-top" } %>
+    
+  </div>
+
+  <div class="uk-margin-medium-top uk-text-center uk-text-bolder">
+    <%= f.button :submit, "تسجيل", class: "uk-button uk-button-primary uk-button-large uk-width-1-1" %>
+  </div>
+<% end %>
+
+</div>
+</div>
+<%= render "users/shared/links" %>
+</div>
+</div>

@@ -1,0 +1,26 @@
+
+<div class="cg-dark-sc uk-section-small nav">
+    <div class="uk-container">
+        <div class="uk-grid-match uk-child-width-1-2" uk-grid>
+            <div>
+                <ul class="uk-switcher">
+                    <li class="uk-active">
+                        <span><%=image_tag("icons/facebook.svg")%></span>
+                        <span><%=image_tag("icons/twitter.svg")%></span>
+                        <span><%=image_tag("icons/youtube.svg")%></span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                 <ul class="uk-list uk-text-left">
+                    <li>2020 CGAnatomy, All Rights Reserved</li>
+                    <% if user_signed_in? && (current_user.has_role? :admin) %>
+                        <li class="uk-active"><%= link_to 'Admin', rails_admin_path%></li> 
+                        <li class="uk-active"><%= link_to 'Feeds', activities_path%></li> 
+                    <% end %>
+                </ul>                
+            </div>
+        </div>
+
+    </div>
+</div>
