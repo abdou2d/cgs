@@ -7,6 +7,14 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+server '18.158.177.172', user: 'deploy', roles: %w{app db web}
+
+
+set :ssh_options, { 
+    forward_agent: true, 
+    auth_methods: %w[publickey],
+    keys: %w[/mnt/c/users/abdou/desktop/cgs.pem]
+  }
 
 
 # role-based syntax
