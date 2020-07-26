@@ -19,8 +19,6 @@ require("style/style.scss")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
-import "uikit"
-
 
 require("trix")
 require("@rails/actiontext")
