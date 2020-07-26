@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.has_role? :member 
+    if user.has_role? :admin 
       can :access, :rails_admin
       can :read, :dashboard     
       can :manage, [User, Tag, Role, Profile, Post, Page, Episode, Activity, Comment]
