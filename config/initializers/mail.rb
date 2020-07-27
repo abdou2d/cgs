@@ -1,4 +1,4 @@
- config.action_mailer.smtp_settings = {
+ActionMailer::Base.smtp_settings = {
     :address => ENV["SMTP_SERVER"],
     :port => 587,
     :user_name => ENV["SMTP_USERNAME"], #Your SMTP user
