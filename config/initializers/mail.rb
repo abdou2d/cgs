@@ -1,9 +1,8 @@
-ActionMailer::Base.smtp_settings = {
-    :user_name => 'apikey',
-    :password => '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',
-    :domain => 'cganatomy.com',
-    :address => 'smtp.sendgrid.net',
+ config.action_mailer.smtp_settings = {
+    :address => ENV["SMTP_SERVER"],
     :port => 587,
-    :authentication => :plain,
+    :user_name => ENV["SMTP_USERNAME"], #Your SMTP user
+    :password => ENV["SMTP_PASSWORD"], #Your SMTP password
+    :authentication => :login,
     :enable_starttls_auto => true
   }
