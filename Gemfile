@@ -56,4 +56,4 @@ gem 'country_select', '~> 4.0'
 gem 'active_storage_validations', '~> 0.8.9'
 gem 'pagy', '~> 3.8', '>= 3.8.3'
 gem 'aws-sdk-s3', '~> 1.75', require: false
-gem 'aws-sdk-ses', '~> 1.33', require: 'aws/ses'
+gem 'aws-sdk-ses', '~> 1.33'
