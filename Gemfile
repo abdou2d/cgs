@@ -55,3 +55,4 @@ gem 'public_activity', '~> 1.6', '>= 1.6.4'
 gem 'country_select', '~> 4.0'
 gem 'active_storage_validations', '~> 0.8.9'
 gem 'pagy', '~> 3.8', '>= 3.8.3'
+gem 'aws-sdk-s3', '~> 1.75', require: false
