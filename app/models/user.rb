@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
 
   before_create :build_profile
-  # after_create :welcome
-  # def welcome
-  #   WelcomeMailer.welcome(self).deliver
-  # end
+  after_create :welcome
+  def welcome
+    WelcomeMailer.welcome(self).deliver
+  end
 
   validates :username,  presence: true, uniqueness: { :case_sensitive => false }, length: { in: 5..30 }, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   

@@ -8,21 +8,21 @@
 <div class="uk-container-expand uk-background-default">
     <div class="uk-container" >
         <div class="uk-padding-small uk-padding-remove-bottom "  uk-grid>
-            <div class="uk-text-right uk-width-expand">
+            <div class="uk-text-right uk-width-expand@s">
                 <h1 class="uk-h2"><%= @episode.title %></h1>
             </div>
             <div class="uk-padding-remove-bottom uk-width-auto" id="like_<%= @episode.slug %>_likes">
                 <%= render partial: "likes", locals: {episode: @episode} %>
             </div>  
-                                            
-            <div class="uk-text-left uk-width-auto">
-                <div class="fb-share-button uk-margin-right"
+                               
+                <div class="fb-share-button uk-padding-remove-left uk-margin-small-right uk-margin-small-top uk-width-auto@s"
                     data-href="<%= +request.fullpath %>"
                     data-layout="button" 
-                    data-size="small">
+                    data-size="large">
                 </div>
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="small" data-hashtags="cg anatomy" data-show-count="false"></a>
-            </div>
+                <div class="uk-width-auto@s uk-margin-small-right uk-margin-small-top">
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="cg anatomy" data-show-count="false"> </a>
+                </div>
 
         </div>
     </div>
