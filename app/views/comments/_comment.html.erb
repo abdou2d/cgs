@@ -6,7 +6,7 @@
                 
             </header>
 
-            <div class="uk-comment-body" data-controller="comment" data-action="click->comment#hello" >
+            <div class="uk-comment-body" data-controller="comment-list" data-target="comment-list.comment" >
              <header class="uk-comment-header uk-position-relative">
                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                     <div class="uk-width-auto">
@@ -65,16 +65,28 @@
 
            
              <header class="uk-comment-header uk-position-relative">
-                <div class="uk-position-bottom-left uk-position-small ">
+                <div class="uk-position-bottom-left uk-position-small " >
 
-                <% if user_signed_in? && (current_user.has_role? :admin)  %>
-                  <%= link_to [comment.episode, comment], method: :delete, data: { confirm: 'حذف التعليق' }, class: "uk-link-muted" do %>
+                  
+
+                <% if user_signed_in? && (comment.created_at >=  1.minutes.ago &&  current_user == comment.user)   %>
+                  <%= link_to [comment.episode, comment], 
+                        method: :delete, data: { confirm: 'حذف التعليق' },
+                        data: { action: "comment-list#destroy" },
+                        class: "uk-link-muted" do %>
                           <%=image_tag("icons/trash.png")%>
-                          
-                <% end %>
-                          </div>
+                  <% end %>
+
+                <% elsif user_signed_in? &&  (current_user.has_role? :admin) %>  
+                  <%= link_to [comment.episode, comment], 
+                        method: :delete, data: { confirm: 'حذف التعليق' },
+                        data: { action: "comment-list#destroy" },
+                        class: "uk-link-muted" do %>
+                          <%=image_tag("icons/trash.png")%>
+                  <% end %>
                 <% end %>
 
+                    </div>
               </header>
             </div>
         </article>

@@ -1,4 +1,15 @@
-<h2>Change your password</h2>
+<%= stylesheet_link_tag 'nav' %> 
+
+<div class="ar uk-section uk-section">
+<div class="uk-container uk-container-small uk-margin-xlarge-bottom">
+<div class="uk-padding-remove-top uk-padding">
+<%= link_to root_path do %>      
+    <%=image_tag("cga53.svg", width: "300px", :class => "uk-margin-auto uk-navbar-item uk-logo")%>
+  <% end %>
+
+  <div class="uk-width-large uk-margin-auto uk-background-default uk-padding">
+    <div class="uk-form-stacked">
+      <h1 class="ar uk-margin-medium-bottom uk-text-center">تعديل كلمة المرور</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -12,16 +23,25 @@
                 required: true,
                 autofocus: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password", class: "uk-input" } %>
+                input_html: { autocomplete: "new-password", class: "uk-input uk-margin-small-top" } %>
     <%= f.input :password_confirmation,
                 label: "Confirm your new password",
                 required: true,
-                input_html: { autocomplete: "new-password", class: "uk-input" } %>
+                input_html: { autocomplete: "new-password", class: "uk-input uk-margin-small-top" } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+  <div class="uk-margin-medium-top uk-text-center uk-text-bolder">
+    <%= f.button :submit, "Change my password", class: "ar uk-button uk-button-primary uk-button-large uk-width-1-1" %>
   </div>
 <% end %>
 
+
+  </div></div>
+</div></div></div>
+
+
+
+
 <%= render "users/shared/links" %>
+
+

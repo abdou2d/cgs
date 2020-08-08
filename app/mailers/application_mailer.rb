@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'mail@cganatomy.com'
+  default from: 'CG ANATOMY<mail@cganatomy.com>'
   layout 'mailer'
 end

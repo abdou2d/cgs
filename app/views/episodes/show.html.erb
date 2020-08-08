@@ -37,10 +37,10 @@
 
     <hr  class="uk-divider">
         <div class="uk-container uk-container-small uk-padding uk-background-default shadow">
-            <ul class="uk-comment-list">
-                <h2 class="uk-heading-line"><span>التعليقات  <span class="cg-badge" ><%= @episode.comments.count %></span></span></h2>
+            <ul class="uk-comment-list" data-controller="comment-list">
+                <h2 class="uk-heading-line"><span>التعليقات  <span class="cg-badge" data-target="comment-list.count" ><%= @episode.comments.count %></span></span></h2>
                 
-                <div class="comment-list" data-controller="comment-list">
+                <div class="comment-list" >
                     <ul class="comments-list" data-target="comment-list.commentList">
                         <%= render @comments %>
                     </ul>
@@ -49,7 +49,7 @@
                         <% if user_signed_in? %>
                             <%= form_with model: [@episode, @comment], html: { data: { type: "html", action: "ajax:success->comment-list#onPostSuccess ajax:error->comment-list#onPostError" } } do |f| %>
                                 <%= f.text_area :body, data: { target: "comment-list.text" }, placeholder: "أبدأ الكتابة", class: "uk-textarea shadow uk-padding-small" %>
-                                <%=image_tag("icons/image-file.svg")%> <%= f.file_field :img %>
+                                <%=image_tag("icons/image-file.svg")%> <%= f.file_field :img, data: { target: "comment-list.img" } %>
                                 <div class="uk-margin-medium-top  uk-text-bolder">
                                     <%= f.submit "أضف تعليق", class: "ar uk-button uk-button-primary uk-button-large" %>                            
                                 </div>

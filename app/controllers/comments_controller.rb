@@ -16,10 +16,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @episode.comments.find(params[:id])
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @episode, notice: 'تم حذف التعليق' }
-      format.json { head :no_content }
-    end
+    
   end
 
 
