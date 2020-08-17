@@ -1,6 +1,0 @@
-	 
-   <% if activity.trackable %>
-  Comment __<%= local_time_ago activity.trackable.created_at %>  /  <%= link_to activity.trackable.episode.title, activity.trackable.episode  %>
-<% else %>
-	has removed
-<% end %>

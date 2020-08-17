@@ -1,0 +1,9 @@
+div class="uk-section uk-section-default"
+        div class="uk-container uk-container-small uk-padding uk-text-center uk-background-default"
+                h1.uk-h1 = @post.title
+                div class="time uk-comment-meta" 
+                        a.uk-link-reset href="#" = local_time_ago @post.created_at
+
+div class="uk-container-expand uk-background-default"
+        div class="uk-container uk-container-small uk-padding-large"
+                p == @post.body

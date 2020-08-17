@@ -1,0 +1,56 @@
+ul.uk-comment-list
+  li
+    article class="uk-comment uk-visible-toggle" tabindex="-1"
+      div class="uk-comment-body" data-controller="comment-list" data-target="comment-list.comment"
+        header class="uk-comment-header uk-position-relative"
+          div class="uk-grid-medium uk-flex-middle" uk-grid=""
+              .uk-width-auto                  
+                .uk-width-expand
+                  div class="uk-grid-small uk-flex-middle" uk-grid=""
+                    .uk-width-auto
+                      = link_to profile_path(comment.user.username) do
+                        -if comment.user.profile.avatar.present?
+                          = image_tag(comment.user.profile.avatar.variant(combine_options: {resize: '60x60^', extent: '60x60'}), class: 'uk-border-circle')
+                        -else                   
+                          div class="avatar-circle avatar-s uk-margin-auto"
+                            span class="initials initial-s"
+                              = comment.user.av 
+
+                    .uk-width-expand                  
+                      -if comment.user.profile.first_name?
+                        h4 class="uk-comment-title uk-link-heading uk-margin-remove"
+                          li.uk-active = link_to comment.user.profile.full_name, profile_path(comment.user.username)
+                          p class="en uk-text-meta uk-margin-remove-top" = link_to comment.user.username, profile_path(comment.user.username)
+                       
+                      -else
+                        h4
+                          li.uk-active = link_to comment.user.username, profile_path(comment.user.username)
+
+
+              div class="uk-position-top-left time uk-comment-meta"
+                a.uk-link-reset href="#"
+                  = local_time_ago comment.created_at
+
+
+        .ar id="comment_#{comment.id}"        
+          p == comment.body
+          div uk-lightbox=""
+            = link_to (image_tag comment.img.variant(resize_to_limit: [300, 300])), comment.img if comment.img.attached? do
+              = image_tag comment.img if comment.img.attached?
+
+           
+        header class="uk-comment-header uk-position-relative"
+          div class="uk-position-bottom-left uk-position-small "
+            -if user_signed_in? && (comment.created_at >=  1.minutes.ago &&  current_user == comment.user)
+              = link_to [comment.episode, comment], 
+                    method: :delete, data: { confirm: 'حذف التعليق' },
+                    data: { action: "comment-list#destroy" },
+                    class: "uk-link-muted" do 
+                      =image_tag("icons/trash.png")
+
+            - elsif user_signed_in? &&  (current_user.has_role? :admin)
+              = link_to [comment.episode, comment], 
+                method: :delete, data: { confirm: 'حذف التعليق' }, 
+                data: { action: "comment-list#destroy" }, 
+                class: "uk-link-muted" do 
+                  = image_tag("icons/trash.png")

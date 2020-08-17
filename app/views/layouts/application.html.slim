@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title
+      -if @meta_title
+        = @meta_title
+      -elsif @meta
+        = @meta
+      -else
+        | CG Anantomy 
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = favicon_link_tag asset_path('favicon.ico')
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body dir='rtl'
+      div data-controller="home"
+        - flash.each do |type, msg| 
+          div class="ar uk-text-center uk-padding-small #{type} uk-width-expand" data-target="home.notice"
+            = msg 
+      
+      = render "shared/header"
+      == yield
+      = render "shared/footer"
+    

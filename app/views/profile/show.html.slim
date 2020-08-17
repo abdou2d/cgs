@@ -1,0 +1,33 @@
+div class="uk-flex uk-margin uk-margin-xlarge-bottom "
+    div class="uk-margin-auto  uk-width-1-1 uk-card uk-card-default uk-card-body"
+        .uk-container-expand
+            div class="uk-container uk-container-small uk-margin-xlarge"  
+                article.uk-comment dir="ltr" 
+                    header.uk-comment-header
+                        div class="uk-grid-medium uk-flex-middle" uk-grid=""
+
+                            .uk-width-auto
+                                .uk-comment-avatar
+                                    = profile_avatar(@user.profile)
+
+                            .uk-width-expand
+                                h4 class="uk-comment-title uk-margin-remove"
+                                    - if @user.profile.first_name?
+                                        h1 class="uk-active uk-margin-remove-bottom" = @user.profile.full_name             
+                                        h5.uk-margin-remove-top @ = @user.username                                            
+                                    - else
+                                        .uk-active = @user.username 
+
+                                ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top"
+                                    li 
+                                        = image_tag("icons/time.png")    
+                                        | Joined 
+                                        = @user.created_at.strftime("%B %d, %Y")                                       
+                                    li 
+                                        - if @user == current_user
+                                            = link_to edit_profile_path(current_user.profile) do
+                                                =image_tag("icons/edit.svg")
+
+
+                                    li = @user.sign_in_count if user_signed_in? && (current_user.has_role? :admin)
+                                    li = @user.profile.country if user_signed_in? && (current_user.has_role? :admin)

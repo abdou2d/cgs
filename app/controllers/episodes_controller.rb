@@ -1,5 +1,6 @@
 class EpisodesController < ApplicationController
   def index
+    @meta = "CG Anantomy | الدروس"
     if params[:tag]
       @episodes = Episode.tagged_with(params[:tag]).published
     else

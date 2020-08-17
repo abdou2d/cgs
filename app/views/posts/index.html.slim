@@ -1,0 +1,15 @@
+div class="uk-section uk-padding-remove-bottom uk-background-default"
+    div class="uk-text-center ar"
+        h1.ar المدونة
+
+div class="uk-container-expand uk-background-default"
+    div class="uk-container uk-container-small uk-padding-large"
+        div class="uk-child-width-1-2@s uk-grid-match" uk-grid=""
+                - @posts.each do |post|
+                    div
+                        div class="uk-card shadow uk-padding-remove uk-width-large uk-card-body"
+                            .uk-card-media-top
+                                = image_tag post.img.variant(combine_options: {resize: '450x150^', extent: '450x150'})
+                            .uk-card-body
+                                h3 class="uk-card-title ar" = link_to post.title, post
+                                p = truncate((post.body.to_plain_text), length: 80)

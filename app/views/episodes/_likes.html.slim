@@ -1,0 +1,12 @@
+span.uk-h3 = @episode.likes.count
+|   
+-if user_signed_in? && current_user.likes?(@episode)
+  = link_to episode_like_path(@episode), method: :delete, remote: true do  
+    =image_tag("icons/heart.png")
+-elsif user_signed_in?
+  = link_to episode_like_path(@episode), method: :post, remote: true do
+    =image_tag("icons/heart-2.png")
+-else
+  span uk-tooltip="تحتاج لتسجيل الدخول"
+    = link_to  new_user_session_path do 
+      =image_tag("icons/heart-2.png")

@@ -159,3 +159,42 @@ hr, .uk-hr {
     align-items: center;
 } 
 .uk-border-circle{border: 2px solid #1b6ac9;}
+
+.scroller {
+    animation: scroll 15s cubic-bezier(0.545, 0.035, 0.255, 1) normal forwards;
+    animation-name: example;
+}
+.scroll-wrap {
+    overflow: hidden;
+    display: inline-block;
+    height: 60px;
+}
+ .scroll-item {
+    font-size: 2.5rem;
+    line-height: 65px;
+    height: 65px;
+}
+@keyframes example {
+  0%{transform:translateY(0px)}
+  5%{transform:translateY(0px)}
+  10%{transform:translateY(-65px)}
+  15%{transform:translateY(-65px)}
+  20%{transform:translateY(-130px)}
+  25%{transform:translateY(-130px)}
+  30%{transform:translateY(-195px)}
+  35%{transform:translateY(-195px)}
+  40%{transform:translateY(-260px)}
+  45%{transform:translateY(-260px)}
+  50%{transform:translateY(-325px)}
+  55%{transform:translateY(-325px)}
+  60%{transform:translateY(-390px)}
+  65%{transform:translateY(-390px)}
+  70%{transform:translateY(-455px)}
+  75%{transform:translateY(-455px)}
+  80%{transform:translateY(-520px)}
+  85%{transform:translateY(-520px)}
+  90%{transform:translateY(-585px)}
+  95%{transform:translateY(-585px)}
+  100%{transform:translateY(-585px)}
+
+}

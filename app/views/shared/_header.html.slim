@@ -1,0 +1,81 @@
+nav class="uk-navbar-container uk-navbar-transparent cg-dark uk-light nav" dir="ltr"
+  .uk-container
+    .uk-navbar uk-navbar="mode: click"
+        div class="uk-navbar-left uk-hidden@m"
+            ul.uk-navbar-nav
+                li.uk-active
+                    = link_to root_path do 
+                        =image_tag("cga52.svg", width: "220px", :class => "uk-navbar-item uk-logo")
+                   
+        div class="uk-navbar-left uk-visible@m"
+            ul.uk-navbar-nav
+                = link_to root_path do 
+                    = image_tag("cga52.svg", width: "220px", :class => "uk-navbar-item uk-logo")                    
+
+        div class="uk-navbar-center uk-visible@m"
+            ul.uk-navbar-nav
+                li.uk-active 
+                    = link_to 'المدونة', posts_path 
+                li.uk-active 
+                    = link_to 'الدروس', episodes_path
+            
+        .uk-navbar-right
+            ul class="uk-navbar-nav uk-visible@m" 
+                - if user_signed_in?
+                    li class="ar uk-active"
+                        - if current_user.profile.first_name?
+                            = link_to current_user.profile.first_name, profile_path(current_user.username)
+                        - else
+                            = link_to current_user.username, profile_path(current_user.username)
+                        li
+                            = link_to  profile_path(current_user.username) do
+                                - if current_user.profile.avatar.present?
+                                    = image_tag(current_user.profile.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40'}), class: 'uk-border-circle')
+                                - else
+                                    div class="avatar-circle avatar-xs uk-margin-auto"
+                                        span class="initials initialsx initial-s"
+                                            = current_user.av
+                            .uk-navbar-dropdown
+                                ul class="uk-nav uk-navbar-dropdown-nav"
+                                    li.uk-active = link_to "Profile", profile_path(current_user.username)
+                                    li.uk-active = link_to "Account Settings", edit_user_registration_path
+                                    li = link_to 'Sign out', destroy_user_session_path, method: :delete
+                - else
+                    li class="uk-active uk-text-bold" = link_to 'Login', new_user_session_path
+                    li class="uk-active uk-text-bold" = link_to 'join now', new_user_registration_path
+            ul.uk-navbar-nav
+                li
+                    a class="uk-navbar-toggle uk-hidden@m" uk-toggle="target: #offcanvas-nav-primary" href="#"
+                        =image_tag("icons/menu.svg")
+
+#offcanvas-nav-primary uk-offcanvas="flip: true"  data-turbolinks="false"
+    div class="uk-offcanvas-bar cg-offcan uk-flex uk-flex-column"
+        ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical"
+            li class="uk-active uk-margin ar" = link_to 'الدروس', episodes_path
+            li class="uk-active uk-margin ar" = link_to 'المدونة', posts_path
+
+            - if user_signed_in? 
+                li class="ar uk-active"
+                    - if current_user.profile.first_name?
+                        = link_to current_user.profile.first_name, profile_path(current_user.username)              
+                    -else
+                        = link_to current_user.username, profile_path(current_user.username)     
+
+                li.uk-parent
+                    = link_to  profile_path(current_user.username) do 
+                        - if current_user.profile.avatar.present?
+                            = image_tag(current_user.profile.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40'}), class: 'uk-border-circle')
+                        - else                                
+                            div class="avatar-circle avatar-xs uk-margin-auto"
+                                span class="initials initialsx initial-s"
+                                    = current_user.av 
+
+                ul class="uk-nav-sub uk-margin"
+                    li class="uk-active uk-margin" = link_to "Profile", profile_path(current_user.username)
+                    li.uk-active = link_to "Settings", edit_user_registration_path
+                    <hr>
+                    li = link_to 'Sign out', destroy_user_session_path, method: :delete
+
+            -else 
+                li class="uk-active uk-text-bold" = link_to 'Login', new_user_session_path
+                li class="uk-active uk-text-bold" = link_to 'Register', new_user_registration_path

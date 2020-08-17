@@ -1,0 +1,5 @@
+- if activity.trackable
+Like __#{ local_time_ago activity.trackable.created_at }  /  #{ link_to activity.trackable.episode.title, activity.trackable.episode }
+	
+- else 
+	has removed

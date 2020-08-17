@@ -1,0 +1,66 @@
+.uk-container-expand
+  div class="uk-container uk-margin-xlarge"  
+    div class="uk-grid-small uk-child-width-expand uk-text-center uk-margin-top  uk-hidden@m" uk-grid=""
+    
+      div
+        = link_to  edit_user_registration_path do
+          div class="uk-card-default uk-padding-small uk-card-hover shadow uk-h3"
+            | Edit Account
+
+      div
+        = link_to edit_profile_path(current_user.username) do
+          div class="uk-card-default uk-padding-small uk-card-hover shadow uk-h3"
+            | Edit Profile
+
+    div class="uk-child-width-1-2 uk-grid-collapse uk-flex-center uk-margin-top" uk-grid=""
+
+      div class="ar uk-width-2-5@m"
+        div class="uk-card uk-card-default uk-card-body shadow"
+
+          -if @profile.avatar.present?
+            = image_tag @profile.avatar.variant(resize_to_limit: [200, 200])
+          -else
+            div class="avatar-circle avatar-l uk-margin-auto"
+              span.initials
+                = @profile.user.username[0].upcase
+            
+
+          = simple_form_for current_user.profile do |f|
+            = f.input :avatar, label: false
+       
+            -if @profile.errors.any?
+              - @profile.errors.full_messages.each do |error|
+                li.hint = error
+                
+            h2 = @profile.full_name
+
+            .uk-grid-small uk-grid=""
+
+              div class="uk-width-1-2@s"
+                = f.input :first_name,  label: 'الاسم الاول', hint: ("3..10 حرف"), input_html: { class: "ar uk-input" }
+
+              div class="uk-width-1-2@s"
+                = f.input :last_name, required: true, hint: ("3..10 حرف"), label: 'الاسم الثاني',input_html: { class: "uk-input" }
+            
+              div class="uk-width-2-3@s uk-form-controls"
+                = f.input :country, priority: ["EG", "FR", "DE"], label: 'الدولة', input_html: { class: "uk-input uk-select" }
+     
+
+              div class="uk-margin-medium-top uk-text-center uk-text-bolder"
+                = f.button :submit, "تحديث", class: "uk-button uk-button-primary uk-button-large"
+
+
+
+      div class=" uk-flex uk-flex-column uk-grid-small uk-width-1-5@m uk-text-center uk-margin-right uk-visible@m" uk-grid=""
+        div
+          = link_to  edit_user_registration_path do
+            div class="uk-background-default uk-padding-small uk-margin-remove shadow uk-h3"
+              | Edit Account
+
+        div
+          = link_to edit_profile_path(current_user.profile) do
+            div class="uk-background-default uk-padding-small uk-margin-remove uk-h3"
+              | Edit Profile
+
+
+

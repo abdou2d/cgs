@@ -1,0 +1,14 @@
+nav  class="uk-navbar-container uk-navbar-transparent cg-dark-sc uk-light nav" dir="ltr"
+    div class="uk-container uk-padding"
+        .uk-navbar        
+            .uk-navbar-left
+                ul.uk-navbar-nav
+                    li 2020 CGAnatomy, All Rights Reserved
+                    -if user_signed_in? && (current_user.has_role? :admin)
+                        li= link_to 'Admin', rails_admin_path
+                        li= link_to 'Feeds', activities_path
+            .uk-navbar-right
+                ul.uk-navbar-nav
+                    li= image_tag("icons/twitter.svg")
+                    li= image_tag("icons/youtube.svg")
+                    li= image_tag("icons/facebook.svg")
